@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--加载properties配置文件-->
+    <properties resource="db.properties"></properties>
+
+    <settings>
+        <!--设置列名映射的时候是否是驼峰标识 数据库的字段可能不是驼峰命名的，启用驼峰命名转换-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <!-- 设置默认数据源    -->
+    <environments default="development">
+    <!-- 根据不同id名区分不同数据源-->
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="EmpDao.xml"/>
+        <mapper resource="mappers/Course.xml"></mapper>
+        <mapper resource="mappers/Emp.xml"></mapper>
+        <mapper resource="mappers/Student.xml"></mapper>
+        <mapper resource="mappers/User.xml"></mapper>
+    </mappers>
+</configuration>

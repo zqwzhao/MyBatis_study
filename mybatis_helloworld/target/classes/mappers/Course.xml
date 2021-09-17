@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="course">
+    <select id="selectAll" resultType="cn.zhaoqw.bean.Course">
+        select * from jwxt.course order by courseTypeNo desc
+    </select>
+
+    <!-- 单参数   -->
+    <select id="selectById" resultType="cn.zhaoqw.bean.Course" parameterType="Integer">
+        select * from jwxt.course where courseTypeNo = #{courseTypeNo}
+    </select>
+
+    <!-- 多参数查询    -->
+    <select id="selectById2" resultType="cn.zhaoqw.bean.Course" parameterType="java.util.Map">
+        select * from jwxt.course where courseTypeNo = #{courseTypeNo} and courseNo = #{courseNo}
+    </select>
+
+
+</mapper>
+
+
+<!--
+private Integer empno;
+    private String ename;
+    private String job;
+    private Integer mgr;
+    private Date hiredate;
+    private Double sal;
+    private Double comm;
+    private Integer deptno;
+
+-->

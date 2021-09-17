@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zhaoqw.dao.EmpDao">
+    <select id="selectEmpEmpno" resultType="cn.zhaoqw.bean.Emp">
+        select * from t_emp where empno=#{empno}
+    </select>
+    <insert id="save" >
+        insert into t_emp(empno,ename) values(#{empno},#{ename})
+    </insert>
+
+    <update id="update">
+        update t_emp set sal=#{sal} where empno = #{empno}
+    </update>
+    
+    <delete id="delete" >
+        delete from t_emp where empno = #{empno}
+    </delete>
+    <!-- 主键自增可以用  useGeneratedKeys 和  keyProperty 来设置  -->
+    <insert id="insertEmp" useGeneratedKeys="true" keyProperty="empno">
+        insert into t_emp(ename) values(#{ename})
+    </insert>
+    <select id="getAllEmpReturnMap" resultType="cn.zhaoqw.bean.Emp">
+        select * from t_emp
+    </select>
+
+</mapper>
